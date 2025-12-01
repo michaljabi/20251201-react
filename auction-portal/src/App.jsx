@@ -1,12 +1,10 @@
-// import "./App.css";
+import { Header } from "./Header.jsx";
 
 export function App() {
 
   return (
     <>
-      
+      <Header />
     </>
   );
 }
-
-export default App;
