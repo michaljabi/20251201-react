@@ -31,27 +31,32 @@
          * Jaka stała motywacja za tym, żeby ją utworzyć.
          * Porównanie JSX a HTML
          *
-         * https://reactjs.org/docs/introducing-jsx.html
+         * https://react.dev/learn/writing-markup-with-jsx
          * */
 	    function HelloReactComponent () {
+
+            const x = 10;
+
 	    	return (
                 <div className="helloWrapper">
-                    <h2>Hello World 2</h2>
+                    <h2>Hello World {x} {x + 2}</h2>
                     <p className="box">
-                        Welcome to my example
+                        Welcome to my example ? { 'hello' }
                     </p>
                 </div>
             )
+            
         }
 
         const evaluateTheJavaScriptElement = <span> 2 + 2 = { 2 + 2 } </span>
 
         const root = createRoot(document.getElementById('root'));
 		root.render(
-           <>
-		        <HelloReactComponent />
-                { evaluateTheJavaScriptElement }
-           </>
+            <>
+                <HelloReactComponent />
+                <div>to naprawia temat { 5 + 6 }</div>
+                {evaluateTheJavaScriptElement}
+            </>
         );
 
     </script>
