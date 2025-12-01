@@ -1,3 +1,8 @@
 export function Sample() {
-    return <></>;
+    return <>
+        To jest przykład
+    </>;
 }
+
+// potem w innym pliku:
+// import { Sample } from './Sample.jsx'
