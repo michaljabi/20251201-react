@@ -1,47 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>JavaScript can run your DOM</title>
     <style>
-        .helloWrapper {
-            text-align: center;
-        }
-        .box {
-            padding: 15px;
-            border: 3px solid darkred;
-        }
-        /*#root {
+      .helloWrapper {
+        text-align: center;
+      }
+      .box {
+        padding: 15px;
+        border: 3px solid darkred;
+      }
+      /*#root {
             display: flex;
             width: 60%;
             margin: 6em auto;
             justify-content: space-around;
         }*/
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="root">
-        <div class="helloWrapper">
+      <div class="helloWrapper">
+        <h2>Hello World</h2>
+        <p class="box">Welcome to my example</p>
+      </div>
+    </div>
+    <script>
+      /**
+       * Jak używając tylko JavaScript (Vanilla) pokazać ten sam wrapper na ekranie?
+       * Umieszczony pod aktualnym div.helloWrapper
+       *
+       * Pomocnicy:
+       * https://developer.mozilla.org/en-US/docs/Web/API
+       * https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/How_to_create_a_DOM_tree
+       *
+       * https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+       * https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+       * https://developer.mozilla.org/en-US/docs/Web/API/Element/append
+       * https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+       */
+
+      console.log("!!!");
+      const root = document.querySelector("#root");
+      // tutaj piszemy kod
+
+      // root.innerText += root.innerText + 'jj'
+      // root.innerText += "jj";
+
+      // Potencjalne rozwiązanie zadania bez .createElement
+      /*
+      root.innerHTML += `<div class="helloWrapper">
             <h2>Hello World</h2>
             <p class="box">
                 Welcome to my example
             </p>
-        </div>
-    </div>
-    <script>
-        /**
-         * Jak używając tylko JavaScript (Vanilla) pokazać ten sam wrapper na ekranie?
-         * Umieszczony pod aktualnym div.helloWrapper
-         *
-         * Pomocnicy:
-         * https://developer.mozilla.org/en-US/docs/Web/API
-         * https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/How_to_create_a_DOM_tree
-         *
-         * https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
-         * https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
-         * https://developer.mozilla.org/en-US/docs/Web/API/Element/append
-         * https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
-         */
+        </div>`;
+        */
+
+      //root.append('TUTAJ WYLąduje append...')
+
+      const div = document.createElement("div");
+      div.className = "helloWrapper";
+
+      const h2 = document.createElement("h2");
+      h2.innerText = "Hello World";
+
+      const p = document.createElement("p");
+      p.className = "box";
+      p.innerText = "Welcome to my example";
+
+      div.append(h2, p);
+      root.append(div);
     </script>
-</body>
+  </body>
 </html>
