@@ -16,9 +16,11 @@
  const hello = simpleExampleObject.hello;
  console.log(hello)
 
+ // const Hello = 2;
  // Teraz:
- const { goodbye } = simpleExampleObject;
+ const { goodbye, hello: hello2 } = simpleExampleObject;
  console.log(goodbye)
+ console.log(hello2)
 
  // Można również:
  const { user: {name} } = simpleExampleObject;

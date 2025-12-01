@@ -33,10 +33,11 @@
             return h2;
         }
 
-        function Paragraph({className, text}) {
+        // function Paragraph({className, text}) {
+        function Paragraph(props) {
 	        const p = document.createElement('p');
-	        p.className = className;
-	        p.textContent = text;
+	        p.className = props.className;
+	        p.textContent = props.text;
 	        return p;
         }
 
