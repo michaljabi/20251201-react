@@ -39,7 +39,7 @@
        * Kompozycja komponentów przy użyciu JSX
        * */
       function Greetings() {
-        return <span> Witaj 2-gi komponencie </span>;
+        return <span onClick={ () => { console.log('!')} }> Witaj 2-gi komponencie </span>;
       }
 
       function HelloWorld() {
@@ -48,6 +48,7 @@
             <h2> Hello world </h2>
             <strong> to mój pierwszy komponent </strong>
             <p>
+              <Greetings />
               <Greetings />
             </p>
           </div>
@@ -58,6 +59,7 @@
       function App() {
         return (
           <div>
+            <HelloWorld />
             <HelloWorld />
           </div>
         );
