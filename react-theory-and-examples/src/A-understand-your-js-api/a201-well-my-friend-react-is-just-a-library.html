@@ -9,6 +9,9 @@
 <body>
 
     <div id="app"></div>
+    <div>
+        Tutaj jest vanilla
+    </div>
 
     <script>
 	    /**
@@ -19,8 +22,12 @@
          * W tym układzie możemy ją dość łatwo "doczepić" do części / całości naszego projektu.
 	     *
 	     * */
-	    const h1 = React.createElement('h1', null, 'Hello, React!');
-	    const $app = document.getElementById('app');
+	    const h1 = React.createElement('h1', { 
+            className: 'test', 
+            title: 'Tooltip',
+            style: { color: 'red' }
+        }, 'Hello, React!');
+	    const $app = document.querySelector('#app');
 	    const rootElement = ReactDOM.createRoot($app);
 		rootElement.render(h1);
 
