@@ -1,15 +1,16 @@
 import { Header } from "./Header.jsx";
+import { MainMenu } from "./MainMenu.jsx";
 
 export function App() {
-
-  const title = "Portal Aukcyjny?"
+  const title = "Portal Aukcyjny";
 
   return (
     <>
-      <Header />
-      <Header appTitle="To" />
-      <Header appTitle="Portal Aukcyjny" />
-      <Header appTitle={title} user={{name: 'Michał'}} />
+      <Header appTitle={title} user={{ name: "Michał" }} />
+      <main className="container">
+        <MainMenu />
+        <section>...</section>
+      </main>
     </>
   );
 }
