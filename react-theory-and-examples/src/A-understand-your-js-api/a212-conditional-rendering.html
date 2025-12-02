@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Conditional Rendering </title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Conditional Rendering</title>
 
-    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
-</head>
-<body>
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
 
-<div id="root"></div>
+    <script type="text/babel" data-type="module">
+      import React, { useState } from "https://esm.sh/react@19";
+      import { createRoot } from "https://esm.sh/react-dom@19/client";
 
-<script type="text/babel" data-type="module">
-    import React from "https://esm.sh/react@19";
-    import { createRoot } from "https://esm.sh/react-dom@19/client";
+      /**
+       * Zadanie:
+       * 1. Dołóż button zmieniający wartość stanu isWeatherFine
+       * 2. Komponent HappySunnyFace ma się pojawiać (w miejscu poniżej) tylko jeśli pogoda jest dobra (isWeatherFine = true)
+       * 3. Sprawdź jakie typy proste może renderować w React
+       *
+       * Cel:
+       * Sprawdzenie jak w React renderować coś lub nie w zależności od warunku.
+       * Nie tylko pod względem typów prostych, ale również komponentów i elementów JSX.
+       * */
 
-    /**
-     * Zadanie:
-     * 1. Dołóż button zmieniający wartość stanu isWeatherFine
-     * 2. Komponent HappySunnyFace ma się pojawiać (w miejscu poniżej) tylko jeśli pogoda jest dobra (isWeatherFine = true)
-     * 3. Sprawdź jakie typy proste może renderować w React
-     *
-     * Cel:
-     * Sprawdzenie jak w React renderować coś lub nie w zależności od warunku.
-     * Nie tylko pod względem typów prostych, ale również komponentów i elementów JSX.
-     * */
+      const HappySunnyFace = () => {
+        // console.log('HappySunnyFace logic fire...')
+        return <span> 😎 </span>
+      };
 
-    const HappySunnyFace = () => (<span> 😎 </span>)
+      function Toggler() {
 
-    const { useState } = React;
+        const [isWeatherFine, setIsWeatherFine] = useState(true);
 
-    function Toggler() {
+        console.log('Toggler state changed...')
+        // PROBLEM:
+        // chemy znać moment w którym komponent jest montowany na DOM, ale, nie chcemy mieć znów tego momentu
+        // "logiki" uruchamianej za KAŻDĄ KOLEJNĄ ZMIANĄ STANU
 
-	    const [isWeatherFine, setIsWeatherFine] = useState(true)
+        const weatherIs = 'Pogoda jest ' + (isWeatherFine ? "Dobra" : "Zła");
 
-	    return (
-		    <div>
-			    Pogoda jest { isWeatherFine ? 'Dobra' : 'Zła' }
-			    <div>
-				    {/* tutaj dodaj button */}
-			    </div>
-			    <div>
-				    {/* tutaj dodaj kod dla komponentu */}
-			    </div>
-		    </div>
-	    )
-    }
+        return (
+          <div>
+            {weatherIs}
+            <div>
+              {/* tutaj dodaj button */}
+              { /*<button onClick={setIsWeatherFine(!isWeatherFine)}> Zmiana pogody </button>*/ }
+              <button onClick={() => {
+                setIsWeatherFine(!isWeatherFine)
+                console.log('setIsWeatherFine fired')
+                }
+            }> Zmiana pogody </button>
+            </div>
+            <div>
+                {isWeatherFine && <HappySunnyFace />}
+            </div>
+          </div>
+        );
+      }
 
-    const root = createRoot(document.getElementById('root'));
-    root.render(<Toggler />);
-</script>
-</body>
+      const root = createRoot(document.getElementById("root"));
+      root.render(<Toggler />);
+    </script>
+  </body>
 </html>
