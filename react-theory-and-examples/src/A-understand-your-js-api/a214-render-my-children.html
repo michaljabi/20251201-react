@@ -20,21 +20,22 @@
      * Dzięki któremu możemy dynamicznie zawierać w komponencie przekazane do niego elementy JSX / komponenty
      * */
 
-    function Sentences(props) {
+    function Sentences({children}) {
+        console.log(children);
 	    return (
 	    	<div>
                 <h2>Zdania:</h2>
-                { props.children }
+                {children}
             </div>
         )
     }
 
     function App() {
     	return (
-    		<Sentences>
+    		<Sentences>    
                 <div> To jest moje 1 zdanie </div>
-                <div> To jest moje 2 zdanie </div>
-                <div> To jest moje 3 zdanie </div>
+                <em> To jest moje 2 zdanie </em>
+                <strong> To jest moje 3 zdanie </strong>
                 <div> To jest moje 4 zdanie </div>
             </Sentences>
         )
