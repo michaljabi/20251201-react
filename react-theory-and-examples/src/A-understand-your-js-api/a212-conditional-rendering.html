@@ -13,7 +13,7 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-      import React, { useState } from "https://esm.sh/react@19";
+      import React, { useState, useEffect } from "https://esm.sh/react@19";
       import { createRoot } from "https://esm.sh/react-dom@19/client";
 
       /**
@@ -29,35 +29,47 @@
 
       const HappySunnyFace = () => {
         // console.log('HappySunnyFace logic fire...')
-        return <span> 😎 </span>
+        // sprawdź porównaj z a304.
+        useEffect(() => {
+          console.log("HappySunnyFace rendered on DOM");
+          return () => {
+            console.log("HappySunnyFace DESTROYED!");
+          }
+        }, []);
+        return <span> 😎 </span>;
       };
 
       function Toggler() {
-
         const [isWeatherFine, setIsWeatherFine] = useState(true);
 
-        console.log('Toggler state changed...')
+        useEffect(() => {
+          console.log("Toggler rendered on DOM");
+          // to tutaj możemy załadwać dane jakieś np. z back-endu do komponentu
+        }, []);
+
+        // console.log("Toggler state changed...");
         // PROBLEM:
         // chemy znać moment w którym komponent jest montowany na DOM, ale, nie chcemy mieć znów tego momentu
         // "logiki" uruchamianej za KAŻDĄ KOLEJNĄ ZMIANĄ STANU
 
-        const weatherIs = 'Pogoda jest ' + (isWeatherFine ? "Dobra" : "Zła");
+        const weatherIs = "Pogoda jest " + (isWeatherFine ? "Dobra" : "Zła");
 
         return (
           <div>
             {weatherIs}
             <div>
               {/* tutaj dodaj button */}
-              { /*<button onClick={setIsWeatherFine(!isWeatherFine)}> Zmiana pogody </button>*/ }
-              <button onClick={() => {
-                setIsWeatherFine(!isWeatherFine)
-                console.log('setIsWeatherFine fired')
-                }
-            }> Zmiana pogody </button>
+              {/*<button onClick={setIsWeatherFine(!isWeatherFine)}> Zmiana pogody </button>*/}
+              <button
+                onClick={() => {
+                  setIsWeatherFine(!isWeatherFine);
+                  console.log("setIsWeatherFine fired");
+                }}
+              >
+                Zmiana pogody
+              </button>
             </div>
-            <div>
-                {isWeatherFine && <HappySunnyFace />}
-            </div>
+            <div>{isWeatherFine && <HappySunnyFace />}</div>
           </div>
         );
       }
