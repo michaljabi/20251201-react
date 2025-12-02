@@ -21,10 +21,11 @@
        * */
 
       // Zmodyfikuj odpowiednio komponent:
-      const Greetings = ({name, b}) => (
+      const Greetings = ({name = "użytkowniku", b}) => (
         <div>
           <code>{String(name)}</code>  
-          Witaj {name || "użytkowniku"}
+          { /*Witaj {name || "użytkowniku"}*/ }
+          <strong> Witaj {name} </strong>
           <div>
             {""} {true} {false} {0} {"?"} {[9, 8, 7, 6, 5]} {[]} {undefined} {null} {NaN}
           </div>
@@ -38,6 +39,10 @@
             <h2> Zadanie: </h2>
             {/* W App modyfikuj tylko kod w tym div (pod tym komentarzem): */}
             <Greetings />
+
+            { /* Zapis w ten sposób nie ma sensu, ale pokazuje KIEDY podstawia się wartość domyślna "użytkowniku" */ }
+            <Greetings name={undefined} />
+
             <Greetings a={2} name="Jacku" />
             <Greetings b="h" name="Krysiu" />
             <Greetings name="Bożeno" />
