@@ -20,7 +20,7 @@
      * Dzięki któremu możemy dynamicznie zawierać w komponencie przekazane do niego elementy JSX / komponenty
      * */
 
-    function Sentences({children}) {
+    function Sentences({children = 'Nie ma zdań'}) {
         console.log(children);
 	    return (
 	    	<div>
@@ -32,12 +32,16 @@
 
     function App() {
     	return (
-    		<Sentences>    
-                <div> To jest moje 1 zdanie </div>
-                <em> To jest moje 2 zdanie </em>
-                <strong> To jest moje 3 zdanie </strong>
-                <div> To jest moje 4 zdanie </div>
-            </Sentences>
+            <>
+                <Sentences/>  
+                <Sentences>test</Sentences>  
+                <Sentences>    
+                    <div> To jest moje 1 zdanie </div>
+                    <em> To jest moje 2 zdanie </em>
+                    <strong> To jest moje 3 zdanie </strong>
+                    <div> To jest moje 4 zdanie </div>
+                </Sentences>
+            </>
         )
     }
 
