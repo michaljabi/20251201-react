@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+
 export function AuctionsPage() {
+
+  useEffect(() => {
+    console.log("AuctionsPage osadzone na stronie, czas pobrać aukcje...");
+  }, []);
+
   return (
     <section>
       <h2>Lista naszych aukcji</h2>
