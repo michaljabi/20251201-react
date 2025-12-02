@@ -21,14 +21,14 @@
        * */
 
       // Zmodyfikuj odpowiednio komponent:
-      const Greetings = (props) => (
+      const Greetings = ({name, b}) => (
         <div>
-          <code>{String(props.name)}</code>  
-          Witaj {props.name || "użytkowniku"}
+          <code>{String(name)}</code>  
+          Witaj {name || "użytkowniku"}
           <div>
             {""} {true} {false} {0} {"?"} {[9, 8, 7, 6, 5]} {[]} {undefined} {null} {NaN}
           </div>
-          {JSON.stringify({})} !<div>{JSON.stringify(props)}</div>
+          {JSON.stringify({})} !<div>{JSON.stringify({name, b})}</div>
         </div>
       );
 
