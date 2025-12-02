@@ -14,14 +14,32 @@
     import React from "https://esm.sh/react@19";
     import { createRoot } from "https://esm.sh/react-dom@19/client";
 
-    const { useState } = React;
+    const { useState, useEffect } = React;
 
     function App() {
 	    const [counter, setCounter] = useState(0);
+
+        // Ten kod docelowo byłby do poprawki (todo jutro.)
+        useEffect(() => {
+            setTimeout(() => {
+                // taki rodzaj aktualizacji count - jest bezpieczny, gdyby 2 miejsca chciały w tym samym momencie zaktualizować `count`
+                // wtedy nie "zgubimy" jednej z tych zmian.
+                setCounter(count => count + 1 ); 
+            }, 9000)
+        }, [])
+
         return (
             <div>
                 <p>Value of a counter is: {counter}</p>
-                <button onClick={() => setCounter(count => count + 1 )}> Increment</button>
+                <button onClick={() => {
+
+                    //setCounter(counter + 1); // set value
+                    //setCounter(counter + 1);
+                    //setCounter(counter + 1); 
+                    setCounter(count => count + 1 ); // update value
+                    //setCounter(count => count + 1 );
+                    // setCounter(count => count + 1 ); 
+                }}> Increment</button>
             </div>
         )
     }
