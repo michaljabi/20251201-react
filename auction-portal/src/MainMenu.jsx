@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router";
 
 export function MainMenu() {
   // tak nie da rady - to musi być STAN!!!! bo zmienia się w czasie (po kliknięciu!)
@@ -44,9 +45,9 @@ export function MainMenu() {
             /* key musi być: 1. Unikatowy 2. Nie-randomowy !!! 3. Nie może być to `index`  */
             menuItems.map((mI) => (
               <li className="nav-item" key={mI.name}>
-                <a className="nav-link" href={mI.link}>
+                <NavLink className="nav-link" to={mI.link}>
                   {mI.name}
-                </a>
+                </NavLink>
               </li>
             ))
           }
