@@ -11,9 +11,25 @@
 /** Uwaga 1: Arrow function ZAWSZE jest anonimowa */
 // Podstawowe znaczenie ma dla nas możliwość skróconego zapisu arrow function
 
+// hello();
+
+// Function Expression
 const hello = () => 'Cześć'
 const greetings = name => `Witaj ${name} !`
 const manyArguments = (a, b) => a + b
+
+manyArguments(2, 3); //=
+manyArguments(2, 31); //=
+
+// To też function expression
+const myFn = function () {}
+
+
+// hello2();
+// ale to jest function definition/declaration
+function hello2() {
+	return 'Cześć'
+}
 
 // Jeśli wyrażenie posiada "wynik" (ewaluuje się) i można je zapisać w jednej linii - to wtedy
 // słowo return jest  dodane "implicit" (niejawnie) - nie trzeba go zapisywać a wynik działania funkcji jest tym
