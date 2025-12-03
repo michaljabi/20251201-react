@@ -27,7 +27,7 @@ export function AuctionsPage() {
   return (
     <section>
       <h2>Lista naszych aukcji</h2>
-      <button className="btn btn-success" onClick={addOneAuction}>
+      <button className="btn btn-success" onClick={loadAuctions}>
         Dodaj jedną aukcje
       </button>
       <div className="row">
