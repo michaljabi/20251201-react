@@ -71,6 +71,10 @@ export function MainMenu() {
             ]*/}
         </ul>
       </div>
+      <div className="text-light d-flex gap-2">
+        <NavLink className="btn btn-outline-primary" to="/add-auction"> Dodaj + </NavLink>
+        <NavLink className="btn btn-outline-secondary" to="/cart"> Koszyk (0) </NavLink>
+      </div>
     </nav>
   );
 }

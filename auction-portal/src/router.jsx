@@ -1,6 +1,10 @@
 import { createBrowserRouter, redirect } from "react-router";
 import { App } from "./App.jsx";
 import { AuctionsPage } from "./auctions/AuctionsPage.jsx";
+import { PromotionsPage } from "./auctions/PromotionsPage.jsx";
+import { AddAuctionPage } from "./auctions/AddAuctionPage.jsx";
+import { CartPage } from "./auctions/CartPage.jsx";
+import { AdvicesPage } from "./adivces/AdvicesPage.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -18,10 +22,28 @@ export const router = createBrowserRouter([
       {
         path: "auctions",
         element: <AuctionsPage />,
+        children: [
+          // {
+          //   path: ":uuid",
+          //   element: <em> Auction detail </em>
+          // }
+        ],
       },
       {
         path: "promotions",
-        element: <em>TODO...</em>,
+        element: <PromotionsPage />,
+      },
+      {
+        path: "advices",
+        element: <AdvicesPage />,
+      },
+      {
+        path: "add-auction",
+        element: <AddAuctionPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
     ],
   },

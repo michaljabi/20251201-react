@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import { Header } from "./Header.jsx";
-import { MainMenu } from "./MainMenu.jsx";
+import { Header } from "./common/Header.jsx";
+import { MainMenu } from "./common/MainMenu.jsx";
 
 export function App() {
   const title = "Portal Aukcyjny";
