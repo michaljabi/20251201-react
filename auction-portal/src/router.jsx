@@ -5,6 +5,7 @@ import { PromotionsPage } from "./auctions/PromotionsPage.jsx";
 import { AddAuctionPage } from "./auctions/AddAuctionPage.jsx";
 import { CartPage } from "./auctions/CartPage.jsx";
 import { AdvicesPage } from "./adivces/AdvicesPage.jsx";
+import { NotFoundPage } from "./common/NotFoundPage.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <CartPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },
