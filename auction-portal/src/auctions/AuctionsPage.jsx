@@ -4,8 +4,8 @@ import { AuctionCard } from "./AuctionCard.jsx";
 
 export function AuctionsPage() {
 
+  // https://tanstack.com/query/latest/docs/framework/react/guides/queries
   const [auctions, setAuctions] = useState([])
-
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -37,16 +37,20 @@ export function AuctionsPage() {
   }
 
   useEffect(() => {
-    console.log("AuctionsPage osadzone na stronie, czas pobrać aukcje...");
+    // console.log("AuctionsPage osadzone na stronie, czas pobrać aukcje...");
+    loadAuctions();
   }, []);
 
   return (
     <section>
       <h2>Lista naszych aukcji</h2>
-      <button className="btn btn-success" onClick={loadAuctions}>
+      { 
+      /* <button className="btn btn-success" onClick={loadAuctions}>
         Dodaj jedną aukcje
-      </button>
+      </button>*/
+      }
       <div className="row">
+        { isLoading && <div className="col-12 alert alert-info">Ładuje aukcje...</div> }
         { errorMessage && <div className="col-12 alert alert-danger">{errorMessage}</div> }
         {
           auctions.map(a => (
