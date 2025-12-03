@@ -1,7 +1,32 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {PageLayout} from '../shared/PageLayout.jsx'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PageLayout } from '../shared/PageLayout.jsx'; 
+import { useFormik } from 'formik';
 
 export function AddAuctionPage() {
+
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      price: 0,
+      imgId: 12,
+      descriprion: ''
+    },
+    validate: (values) => {
+        const error = {};
+        if(!values.title) {
+          error.title = 'Tytuł musi być podany...';
+        }
+        return error;
+    },
+    onSubmit: (values) => {
+        // wyślij formularz za pomocą AJAX
+        // auctionsService.addOne({...})
+        console.log(values);
+    }
+  });
+
+  const imgPreviewUrl = "https://picsum.photos/id/" + formik.values.imgId + "/600/600";
+
   return (
     <PageLayout title="Dodaj aukcje">
       <section className="mt-2 row">
@@ -9,19 +34,22 @@ export function AddAuctionPage() {
           <img
             className="img-thumbnail"
             alt="Podgląd fotografii"
-            src={"https://picsum.photos/id/1/600/600"}
+            src={imgPreviewUrl}
           />
+           { JSON.stringify(formik.values) }
         </div>
+       
         <div className="col-6">
-          <form>
+          <form onSubmit={formik.handleSubmit} noValidate>
             <div className="form-group">
               <label htmlFor="auctionTitle">Nazwa aukcji</label>
-              <div className="input-group mb-3 ">
+              <div className="input-group mb-3">
                 <span className="input-group-text">
                   <FontAwesomeIcon icon="edit" />
                 </span>
-                <input id="auctionTitle" type="text" className="form-control" />
+                <input id="auctionTitle" type="text" className="form-control" {...formik.getFieldProps('title')} />
               </div>
+              {formik.errors.title && <div className="alert alert-danger">{formik.errors.title}</div>}
             </div>
             <div className="form-group">
               <label htmlFor="img">Zdjecie</label>
@@ -29,7 +57,7 @@ export function AddAuctionPage() {
                 <span className="input-group-text">
                   <FontAwesomeIcon icon="image" />
                 </span>
-                <input id="img" type="number" className="form-control" />
+                <input id="img" type="number" className="form-control" {...formik.getFieldProps('imgId')} />
               </div>
             </div>
             <div className="form-group">
