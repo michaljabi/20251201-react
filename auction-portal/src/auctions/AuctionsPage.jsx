@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { auctionService } from './auctions-service'
 import { AuctionCard } from "./AuctionCard.jsx";
+import { addItem } from './cart/cartSlice.js'
+import { useDispatch } from 'react-redux';
 
 export function AuctionsPage() {
 
+  const dispatch = useDispatch();
   // https://tanstack.com/query/latest/docs/framework/react/guides/queries
   const [auctions, setAuctions] = useState([])
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +58,7 @@ export function AuctionsPage() {
         {
           auctions.map(a => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={a.id}> 
-              <AuctionCard auction={a} addToCart={(a) => { console.log(a) }} />
+              <AuctionCard auction={a} addToCart={(a) => { dispatch(addItem(a)) }} />
             </div>
           ))
         }
