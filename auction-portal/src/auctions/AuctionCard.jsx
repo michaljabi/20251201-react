@@ -1,3 +1,5 @@
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+
 /*
     To ma być DUMMY component - czyli taki, który NIE WIE, kto przesyla dane
     Ani kto odbiera callback
@@ -22,7 +24,7 @@ export function AuctionCard({auction, addToCart = (a) => {}}) {
         <div className="d-flex justify-content-between align-content-center">
           <strong> {auction?.price} PLN</strong>
           <button className="btn btn-primary" onClick={() => addToCart(auction)}>
-            [ + ]
+             <FontAwesomeIcon icon="cart-plus"/>
           </button>
         </div>
       </div>

@@ -10,6 +10,7 @@ na razie - zostawiamy getAll() statycznie....
 */
 
 const backendEndpoint = 'http://localhost:3000/auctions';
+// https://vite.dev/guide/env-and-mode
 
 export const auctionService = {
   async getAll() {
