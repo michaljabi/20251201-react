@@ -16,7 +16,7 @@ export function AuctionsPage() {
       <div className="row">
         <div className="col-12 col-sm-6 col-md-4 col-lg-3"> 
           { JSON.stringify(auction) }  
-          <AuctionCard auction={auction} />
+          <AuctionCard auction={auction} addToCart={(a) => { console.log(a) }} />
         </div>
       </div>
     </section>
