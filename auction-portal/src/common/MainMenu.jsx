@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
+import { useSelector } from 'react-redux'
+import { selectItemsCount } from '../auctions/cart/cartSlice.js'
 
 export function MainMenu() {
   // tak nie da rady - to musi być STAN!!!! bo zmienia się w czasie (po kliknięciu!)
   // let isMenuOpen = true;
+  const noOfItems = useSelector(selectItemsCount);
 
   // to jest STAN - zmiana w czasie dzięki setIsMenuOpen, konwencja, że zaczyna się od set.... nazwa.
   const [isMenuOpen, setIsMenuOpen] = useState(
@@ -73,7 +76,7 @@ export function MainMenu() {
       </div>
       <div className="text-light d-flex gap-2">
         <NavLink className="btn btn-outline-primary" to="/add-auction"> Dodaj + </NavLink>
-        <NavLink className="btn btn-outline-secondary" to="/cart"> Koszyk (0) </NavLink>
+        <NavLink className="btn btn-outline-secondary" to="/cart"> Koszyk ({noOfItems}) </NavLink>
       </div>
     </nav>
   );

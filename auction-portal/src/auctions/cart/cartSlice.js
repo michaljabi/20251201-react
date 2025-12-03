@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
+    counter: 0,
     cartItems: []
   },
   reducers: {
@@ -17,6 +18,15 @@ export const cartSlice = createSlice({
   }
 })
 
+// CQS -> Command Query Separation. (podejście)
+
+// Tutaj Aktualizujemy STAN:
+// COMMANDs
 export const { addItem } = cartSlice.actions;
+
+// Tutaj ODCZUTUJEMY STAN:
+// QUERY:
+export const selectAllItems = (rootState) => rootState.cart.cartItems;
+export const selectItemsCount = (rootState) => rootState.cart.cartItems.length;
 
 export default cartSlice.reducer;
