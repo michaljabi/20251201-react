@@ -6,7 +6,23 @@ export function AuctionsPage() {
 
   const [auctions, setAuctions] = useState([])
 
-  const loadAuctions = () => setAuctions(auctionService.getAll());
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const loadAuctions = async () => {
+    setIsLoading(false);
+    setErrorMessage('');
+    try {
+      setIsLoading(true);
+      const auctions = await auctionService.getAll();
+      setAuctions(auctions);
+    } catch(e) {
+      console.error(e);
+      setErrorMessage(e.message);
+    } finally {
+       setIsLoading(false);
+    }
+  }
 
   const addOneAuction = () => {
     // setAuctions(auctionService.getAll())
@@ -31,6 +47,7 @@ export function AuctionsPage() {
         Dodaj jedną aukcje
       </button>
       <div className="row">
+        { errorMessage && <div className="col-12 alert alert-danger">{errorMessage}</div> }
         {
           auctions.map(a => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={a.id}> 

@@ -9,26 +9,16 @@ console.log(data);
 na razie - zostawiamy getAll() statycznie....
 */
 
-// const backendEndpoint = 'http://localhost:3000/auctions';
+const backendEndpoint = 'http://localhost:3000/auctions';
 
 export const auctionService = {
-  getAll() {
-    return [
-      {
-        id: "1",
-        title: "Części do aparatu",
-        imgUrl: "https://picsum.photos/id/36/600/600",
-        description: "Jakiś opis",
-        price: 2000,
-      },
-      {
-        id: "2",
-        title: "Mac Book",
-        imgUrl: "https://picsum.photos/id/48/600/600",
-        description: "Używany - ale sprawny",
-        price: 4000,
-      },
-    ];
+  async getAll() {
+    const response = await fetch(backendEndpoint);
+    if(response.ok) {
+      const data = await response.json();
+      return data;
+    }
+    throw new Error('Nie udało się pobrać aukcji')
   },
   getOne(id) {
     console.log(id);
