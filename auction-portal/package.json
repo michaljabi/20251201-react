@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "echo_hello": "echo hello"
+    "echo_hello": "echo hello",
+    "dev-backend": "json-server ./fake-backend/db-data.json"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
@@ -25,6 +26,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "json-server": "^1.0.0-beta.3",
     "vite": "^7.2.4"
   }
 }
