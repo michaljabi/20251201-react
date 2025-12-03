@@ -26,6 +26,7 @@
                 <MyButton text="Monday" onClickChange={handleDayUpdate} />
                 <MyButton text="Tuesday" onClickChange={handleDayUpdate} />
                 <MyButton text="Wednesday" onClickChange={handleDayUpdate} />
+                <MyButton text={day} onClickChange={handleDayUpdate} />
             </div>
         )
     }
@@ -41,9 +42,15 @@
             </>
         )
     }
+    
 
     const root = createRoot(document.getElementById('root'));
     root.render(<App />);
+
+    setTimeout(() => {
+        document.querySelector('button').addEventListener("click", () => {});
+    }, 3000)
+
 </script>
 </body>
 </html>
